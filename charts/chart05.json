@@ -1,0 +1,125 @@
+{
+  "title": {
+    "text": "Age is the largest reported digital ability gap",
+    "subtitle": "Differences between demographic groups · index points, not percentages",
+    "anchor": "start",
+    "fontSize": 17,
+    "fontWeight": "normal",
+    "color": "#263940",
+    "subtitleColor": "#59696d",
+    "subtitleFontSize": 12,
+    "offset": 15
+  },
+  "data": {
+    "url": "data/ability_gaps.csv"
+  },
+  "width": "container",
+  "height": 240,
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 3,
+        "color": "#b3c4c4"
+      },
+      "encoding": {
+        "y": {
+          "field": "comparison",
+          "type": "nominal",
+          "sort": "-x",
+          "title": null,
+          "axis": {
+            "labelLimit": 225
+          }
+        },
+        "x": {
+          "datum": 0,
+          "type": "quantitative"
+        },
+        "x2": {
+          "field": "gap"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "size": 200,
+        "color": "#0072B2"
+      },
+      "encoding": {
+        "y": {
+          "field": "comparison",
+          "type": "nominal",
+          "sort": "-x"
+        },
+        "x": {
+          "field": "gap",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              55
+            ]
+          },
+          "title": "Gap (index points)"
+        },
+        "tooltip": [
+          {
+            "field": "comparison"
+          },
+          {
+            "field": "gap",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 11,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#263940"
+      },
+      "encoding": {
+        "y": {
+          "field": "comparison",
+          "type": "nominal",
+          "sort": "-x"
+        },
+        "x": {
+          "field": "gap",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "gap",
+          "type": "quantitative",
+          "format": ".1f"
+        }
+      }
+    }
+  ],
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "background": "transparent",
+    "font": "Arial",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#263940",
+      "titleColor": "#263940",
+      "gridColor": "#e5e9e5",
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelColor": "#263940",
+      "titleColor": "#263940",
+      "labelFontSize": 12
+    }
+  }
+}
