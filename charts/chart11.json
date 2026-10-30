@@ -1,0 +1,108 @@
+{
+  "title": {
+    "text": "The oldest group is over three times as likely to be digitally excluded",
+    "subtitle": "Each row represents 100 people · orange squares mark exclusion (rounded)",
+    "anchor": "start",
+    "fontSize": 18,
+    "fontWeight": "bold",
+    "color": "#243847",
+    "subtitleFontSize": 12,
+    "subtitleColor": "#526472"
+  },
+  "data": {
+    "url": "data/waffle_exclusion.csv"
+  },
+  "width": 500,
+  "height": 85,
+  "facet": {
+    "row": {
+      "field": "group",
+      "type": "nominal",
+      "sort": [
+        "Australia overall",
+        "Did not finish secondary school",
+        "Australians aged 75+"
+      ],
+      "header": {
+        "labelFontSize": 13,
+        "labelFontWeight": "bold",
+        "labelPadding": 9,
+        "title": null,
+        "labelLimit": 320
+      }
+    }
+  },
+  "spec": {
+    "width": 500,
+    "height": 80,
+    "mark": {
+      "type": "rect",
+      "stroke": "#ffffff",
+      "strokeWidth": 1.3,
+      "cornerRadius": 2
+    },
+    "encoding": {
+      "x": {
+        "field": "x",
+        "type": "ordinal",
+        "axis": null
+      },
+      "y": {
+        "field": "y",
+        "type": "ordinal",
+        "sort": "descending",
+        "axis": null
+      },
+      "color": {
+        "field": "status",
+        "type": "nominal",
+        "scale": {
+          "domain": [
+            "Excluded",
+            "Not excluded"
+          ],
+          "range": [
+            "#C65A31",
+            "#DCE7E9"
+          ]
+        },
+        "legend": {
+          "title": "Population share",
+          "orient": "bottom"
+        }
+      },
+      "tooltip": [
+        {
+          "field": "group"
+        },
+        {
+          "field": "excluded_pct",
+          "type": "quantitative",
+          "title": "Digitally excluded (%)",
+          "format": ".1f"
+        }
+      ]
+    }
+  },
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "background": "transparent",
+    "font": "Arial",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#243847",
+      "titleColor": "#243847",
+      "gridColor": "#E3E9ED",
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelColor": "#243847"
+    }
+  },
+  "spacing": 15
+}
