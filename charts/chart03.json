@@ -1,0 +1,87 @@
+{
+  "title": {
+    "text": "Young adults score 47.4 points higher than those aged 75+",
+    "subtitle": "2025 Digital Ability Index · group averages, not a forecast",
+    "fontWeight": "normal",
+    "fontSize": 18,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#53646a",
+    "anchor": "start",
+    "color": "#263940",
+    "offset": 18
+  },
+  "data": {
+    "url": "data/group_comparison.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.group === '18–34 years' || datum.group === '75+ years'"
+    }
+  ],
+  "width": "container",
+  "height": 145,
+  "mark": {
+    "type": "bar",
+    "size": 28,
+    "cornerRadiusEnd": 3
+  },
+  "encoding": {
+    "y": {
+      "field": "group",
+      "type": "nominal",
+      "sort": [
+        "18–34 years",
+        "75+ years"
+      ],
+      "title": null
+    },
+    "x": {
+      "field": "score",
+      "type": "quantitative",
+      "scale": {
+        "domain": [
+          0,
+          100
+        ]
+      },
+      "title": "Digital ability (0–100)"
+    },
+    "color": {
+      "condition": {
+        "test": "datum.group === '75+ years'",
+        "value": "#D55E00"
+      },
+      "value": "#0072B2"
+    },
+    "tooltip": [
+      {
+        "field": "group"
+      },
+      {
+        "field": "score",
+        "format": ".1f"
+      }
+    ]
+  },
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "background": "transparent",
+    "font": "Arial",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#344850",
+      "titleColor": "#344850",
+      "gridColor": "#e5e9e5",
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelColor": "#344850",
+      "titleColor": "#344850",
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    }
+  }
+}

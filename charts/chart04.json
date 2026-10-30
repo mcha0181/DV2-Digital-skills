@@ -1,0 +1,125 @@
+{
+  "title": {
+    "text": "Education is associated with higher digital ability",
+    "subtitle": "University qualification versus incomplete secondary education, 2025",
+    "fontWeight": "normal",
+    "fontSize": 18,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#53646a",
+    "anchor": "start",
+    "color": "#263940",
+    "offset": 18
+  },
+  "data": {
+    "url": "data/group_comparison.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.group === 'University qualification' || datum.group === 'Did not complete secondary school'"
+    }
+  ],
+  "width": "container",
+  "height": 145,
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "size": 25,
+        "cornerRadiusEnd": 2
+      },
+      "encoding": {
+        "y": {
+          "field": "group",
+          "type": "nominal",
+          "sort": [
+            "University qualification",
+            "Did not complete secondary school"
+          ],
+          "title": null,
+          "axis": {
+            "labelLimit": 190
+          }
+        },
+        "x": {
+          "field": "score",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ]
+          },
+          "title": "Digital ability (0–100)"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.group === 'University qualification'",
+            "value": "#0072B2"
+          },
+          "value": "#D55E00"
+        },
+        "tooltip": [
+          {
+            "field": "group"
+          },
+          {
+            "field": "score",
+            "format": ".1f"
+          },
+          {
+            "field": "note"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 5,
+        "fontSize": 12,
+        "color": "#263940"
+      },
+      "encoding": {
+        "y": {
+          "field": "group",
+          "type": "nominal",
+          "sort": [
+            "University qualification",
+            "Did not complete secondary school"
+          ]
+        },
+        "x": {
+          "field": "score",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "score",
+          "format": ".1f",
+          "type": "quantitative"
+        }
+      }
+    }
+  ],
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "background": "transparent",
+    "font": "Arial",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#344850",
+      "titleColor": "#344850",
+      "gridColor": "#e5e9e5",
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelColor": "#344850",
+      "titleColor": "#344850",
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    }
+  }
+}

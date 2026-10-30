@@ -1,0 +1,161 @@
+{
+  "title": {
+    "text": "Access scores exceed ability scores in most states",
+    "subtitle": "2025 scores on the same 0–100 index scale",
+    "fontWeight": "normal",
+    "fontSize": 18,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#53646a",
+    "anchor": "start",
+    "color": "#263940",
+    "offset": 18
+  },
+  "data": {
+    "url": "data/states_2025.csv"
+  },
+  "transform": [
+    {
+      "fold": [
+        "access",
+        "affordability",
+        "ability"
+      ],
+      "as": [
+        "metric",
+        "score"
+      ]
+    },
+    {
+      "calculate": "datum.metric === 'access' ? 'Access' : datum.metric === 'affordability' ? 'Affordability' : 'Digital ability'",
+      "as": "dimension"
+    }
+  ],
+  "width": "container",
+  "height": 230,
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "stroke": "white",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {
+          "field": "code",
+          "type": "nominal",
+          "sort": [
+            "ACT",
+            "VIC",
+            "NSW",
+            "WA",
+            "NT",
+            "QLD",
+            "SA",
+            "TAS"
+          ],
+          "title": null,
+          "axis": {
+            "labelAngle": 0
+          }
+        },
+        "y": {
+          "field": "dimension",
+          "type": "nominal",
+          "sort": [
+            "Access",
+            "Affordability",
+            "Digital ability"
+          ],
+          "title": null
+        },
+        "color": {
+          "field": "score",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ],
+            "range": [
+              "#f5fafc",
+              "#075985"
+            ]
+          },
+          "legend": {
+            "title": "Score / 100"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "state"
+          },
+          {
+            "field": "dimension"
+          },
+          {
+            "field": "score",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 12,
+        "color": "#1f2937"
+      },
+      "encoding": {
+        "x": {
+          "field": "code",
+          "type": "nominal",
+          "sort": [
+            "ACT",
+            "VIC",
+            "NSW",
+            "WA",
+            "NT",
+            "QLD",
+            "SA",
+            "TAS"
+          ]
+        },
+        "y": {
+          "field": "dimension",
+          "type": "nominal",
+          "sort": [
+            "Access",
+            "Affordability",
+            "Digital ability"
+          ]
+        },
+        "text": {
+          "field": "score",
+          "type": "quantitative",
+          "format": ".1f"
+        }
+      }
+    }
+  ],
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "background": "transparent",
+    "font": "Arial",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#344850",
+      "titleColor": "#344850",
+      "gridColor": "#e5e9e5",
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelColor": "#344850",
+      "titleColor": "#344850",
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    }
+  }
+}

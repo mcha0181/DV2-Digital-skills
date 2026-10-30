@@ -1,0 +1,144 @@
+{
+  "title": {
+    "text": "The oldest group improved faster, yet remains well behind",
+    "subtitle": "Digital ability at two measured points: 2023 and 2025",
+    "fontWeight": "normal",
+    "fontSize": 18,
+    "subtitleFontSize": 12,
+    "subtitleColor": "#53646a",
+    "anchor": "start",
+    "color": "#263940",
+    "offset": 18
+  },
+  "data": {
+    "url": "data/ability_change.csv"
+  },
+  "width": "container",
+  "height": 160,
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "strokeWidth": 8,
+        "color": "#d9e3e1"
+      },
+      "encoding": {
+        "y": {
+          "field": "group",
+          "type": "nominal",
+          "sort": [
+            "Australia",
+            "75+ years"
+          ],
+          "title": null
+        },
+        "x": {
+          "field": "score2023",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ]
+          },
+          "title": "Digital ability (0–100)"
+        },
+        "x2": {
+          "field": "score2025"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 165,
+        "color": "#D55E00"
+      },
+      "encoding": {
+        "y": {
+          "field": "group",
+          "type": "nominal",
+          "sort": [
+            "Australia",
+            "75+ years"
+          ]
+        },
+        "x": {
+          "field": "score2023",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 165,
+        "color": "#0072B2"
+      },
+      "encoding": {
+        "y": {
+          "field": "group",
+          "type": "nominal",
+          "sort": [
+            "Australia",
+            "75+ years"
+          ]
+        },
+        "x": {
+          "field": "score2025",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dy": -17,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "#0072B2"
+      },
+      "encoding": {
+        "y": {
+          "field": "group",
+          "type": "nominal",
+          "sort": [
+            "Australia",
+            "75+ years"
+          ]
+        },
+        "x": {
+          "field": "score2025",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "delta_label",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "background": "transparent",
+    "font": "Arial",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#344850",
+      "titleColor": "#344850",
+      "gridColor": "#e5e9e5",
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelColor": "#344850",
+      "titleColor": "#344850",
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    }
+  }
+}
