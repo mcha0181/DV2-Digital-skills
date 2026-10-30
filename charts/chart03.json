@@ -1,0 +1,144 @@
+{
+  "title": {
+    "text": "Age and education each create a sizeable divide",
+    "subtitle": "Digital ability in 2025 · two separate comparisons",
+    "anchor": "start",
+    "fontSize": 17,
+    "fontWeight": "normal",
+    "color": "#263940",
+    "subtitleColor": "#586B73",
+    "subtitleFontSize": 12,
+    "offset": 14
+  },
+  "data": {
+    "url": "data/group_comparison.csv"
+  },
+  "width": "container",
+  "height": 230,
+  "transform": [
+    {
+      "calculate": "indexof(['18–34 years','75+ years'],datum.group)>=0 ? 'By age' : 'By education'",
+      "as": "comparison"
+    },
+    {
+      "calculate": "datum.group === '18–34 years' || datum.group === 'University qualification' ? 'Higher-scoring group' : 'Lower-scoring group'",
+      "as": "level"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusEnd": 4,
+        "size": 26
+      },
+      "encoding": {
+        "y": {
+          "field": "group",
+          "type": "nominal",
+          "sort": [
+            "18–34 years",
+            "75+ years",
+            "University qualification",
+            "Did not complete secondary school"
+          ],
+          "title": null,
+          "axis": {
+            "labelLimit": 250
+          }
+        },
+        "x": {
+          "field": "score",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ]
+          },
+          "title": "Digital ability score (0–100)"
+        },
+        "color": {
+          "field": "comparison",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "By age",
+              "By education"
+            ],
+            "range": [
+              "#188778",
+              "#79579B"
+            ]
+          },
+          "title": "Comparison"
+        },
+        "tooltip": [
+          {
+            "field": "group",
+            "type": "nominal"
+          },
+          {
+            "field": "score",
+            "type": "quantitative",
+            "format": ".1f"
+          },
+          {
+            "field": "note",
+            "type": "nominal"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 7,
+        "fontWeight": "bold",
+        "fontSize": 12,
+        "color": "#263940"
+      },
+      "encoding": {
+        "y": {
+          "field": "group",
+          "type": "nominal",
+          "sort": [
+            "18–34 years",
+            "75+ years",
+            "University qualification",
+            "Did not complete secondary school"
+          ]
+        },
+        "x": {
+          "field": "score",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "score",
+          "type": "quantitative",
+          "format": ".1f"
+        }
+      }
+    }
+  ],
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "background": "transparent",
+    "font": "Arial",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#263940",
+      "titleColor": "#263940",
+      "gridColor": "#DEE8EB",
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelColor": "#263940",
+      "titleColor": "#263940"
+    }
+  }
+}

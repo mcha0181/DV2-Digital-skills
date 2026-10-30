@@ -1,0 +1,198 @@
+{
+  "title": {
+    "text": "A relatively small but persistent geographic ability gap",
+    "subtitle": "ACT 79.6 vs Tasmania 69.7 · continuous 0–100 colour scale · 2025",
+    "anchor": "start",
+    "fontSize": 17,
+    "fontWeight": "normal",
+    "color": "#263940",
+    "subtitleColor": "#586B73",
+    "subtitleFontSize": 12,
+    "offset": 14
+  },
+  "hconcat": [
+    {
+      "title": null,
+      "width": 530,
+      "height": 365,
+      "projection": {
+        "type": "mercator",
+        "center": [
+          134,
+          -27
+        ],
+        "scale": 650
+      },
+      "data": {
+        "url": "https://raw.githubusercontent.com/rowanhogan/australian-states/master/states.min.geojson",
+        "format": {
+          "type": "json",
+          "property": "features"
+        }
+      },
+      "transform": [
+        {
+          "lookup": "properties.STATE_NAME",
+          "from": {
+            "data": {
+              "url": "data/states_2025.csv"
+            },
+            "key": "state",
+            "fields": [
+              "ability",
+              "code"
+            ]
+          }
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "#ffffff",
+        "strokeWidth": 1.3
+      },
+      "encoding": {
+        "color": {
+          "field": "ability",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ],
+            "scheme": "blues"
+          },
+          "legend": {
+            "title": "Digital ability (0–100)",
+            "orient": "bottom",
+            "gradientLength": 240
+          }
+        },
+        "tooltip": [
+          {
+            "field": "properties.STATE_NAME",
+            "title": "State / territory"
+          },
+          {
+            "field": "ability",
+            "type": "quantitative",
+            "format": ".1f",
+            "title": "Ability score"
+          }
+        ]
+      },
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "config": {
+        "background": "transparent",
+        "font": "Arial",
+        "view": {
+          "stroke": null
+        },
+        "axis": {
+          "labelColor": "#344850",
+          "titleColor": "#344850",
+          "gridColor": "#e5e9e5",
+          "labelFontSize": 12,
+          "titleFontSize": 12
+        },
+        "legend": {
+          "labelColor": "#344850",
+          "titleColor": "#344850",
+          "labelFontSize": 12,
+          "titleFontSize": 12
+        }
+      }
+    },
+    {
+      "width": 180,
+      "height": 365,
+      "data": {
+        "url": "data/states_2025.csv"
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "bar",
+            "color": "#79579B",
+            "cornerRadiusEnd": 2,
+            "size": 17
+          },
+          "encoding": {
+            "y": {
+              "field": "code",
+              "type": "nominal",
+              "sort": "-x",
+              "title": null
+            },
+            "x": {
+              "field": "ability",
+              "type": "quantitative",
+              "scale": {
+                "domain": [
+                  0,
+                  100
+                ]
+              },
+              "title": "Ability score"
+            },
+            "tooltip": [
+              {
+                "field": "state",
+                "type": "nominal"
+              },
+              {
+                "field": "ability",
+                "type": "quantitative",
+                "format": ".1f"
+              }
+            ]
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "dx": 4,
+            "fontSize": 10,
+            "color": "#263940"
+          },
+          "encoding": {
+            "y": {
+              "field": "code",
+              "type": "nominal",
+              "sort": "-x"
+            },
+            "x": {
+              "field": "ability",
+              "type": "quantitative"
+            },
+            "text": {
+              "field": "ability",
+              "type": "quantitative",
+              "format": ".1f"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "spacing": 15,
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "background": "transparent",
+    "font": "Arial",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#263940",
+      "titleColor": "#263940",
+      "gridColor": "#DEE8EB",
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelColor": "#263940",
+      "titleColor": "#263940"
+    }
+  }
+}
