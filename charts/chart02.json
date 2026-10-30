@@ -1,0 +1,200 @@
+{
+  "title": {
+    "text": "Older and less-educated Australians made gains",
+    "subtitle": "Change in digital ability between two survey reports, 2023 and 2025",
+    "anchor": "start",
+    "fontSize": 17,
+    "fontWeight": "normal",
+    "color": "#263940",
+    "subtitleColor": "#59696d",
+    "subtitleFontSize": 12,
+    "offset": 15
+  },
+  "data": {
+    "url": "data/skills_time.csv"
+  },
+  "width": "container",
+  "height": 290,
+  "transform": [
+    {
+      "filter": "datum.metric === 'Digital Ability'"
+    },
+    {
+      "calculate": "datum.group === 'Australia' ? 'Australia' : datum.group === '75+ years' ? 'Adults 75+' : 'Did not finish secondary school'",
+      "as": "category"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 2.7
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "sort": [
+            2023,
+            2025
+          ],
+          "axis": {
+            "labelAngle": 0,
+            "title": null
+          }
+        },
+        "y": {
+          "field": "score",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              90
+            ]
+          },
+          "title": "Digital ability score (0–100)"
+        },
+        "detail": {
+          "field": "category",
+          "type": "nominal"
+        },
+        "color": {
+          "field": "category",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Australia",
+              "Adults 75+",
+              "Did not finish secondary school"
+            ],
+            "range": [
+              "#2475AC",
+              "#CF693A",
+              "#79579B"
+            ]
+          },
+          "title": "Group"
+        },
+        "tooltip": [
+          {
+            "field": "category",
+            "type": "nominal",
+            "title": "Group"
+          },
+          {
+            "field": "year",
+            "type": "ordinal"
+          },
+          {
+            "field": "score",
+            "type": "quantitative",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true,
+        "size": 125
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "sort": [
+            2023,
+            2025
+          ]
+        },
+        "y": {
+          "field": "score",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "category",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Australia",
+              "Adults 75+",
+              "Did not finish secondary school"
+            ],
+            "range": [
+              "#2475AC",
+              "#CF693A",
+              "#79579B"
+            ]
+          },
+          "legend": null
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontWeight": "bold",
+        "dx": -14,
+        "dy": -13,
+        "fontSize": 11
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "sort": [
+            2023,
+            2025
+          ]
+        },
+        "y": {
+          "field": "score",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "score",
+          "type": "quantitative",
+          "format": ".1f"
+        },
+        "color": {
+          "field": "category",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Australia",
+              "Adults 75+",
+              "Did not finish secondary school"
+            ],
+            "range": [
+              "#2475AC",
+              "#CF693A",
+              "#79579B"
+            ]
+          },
+          "legend": null
+        }
+      }
+    }
+  ],
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "background": "transparent",
+    "font": "Arial",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#263940",
+      "titleColor": "#263940",
+      "gridColor": "#e5e9e5",
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelColor": "#263940",
+      "titleColor": "#263940",
+      "labelFontSize": 12
+    }
+  }
+}

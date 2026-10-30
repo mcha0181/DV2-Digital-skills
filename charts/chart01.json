@@ -1,0 +1,137 @@
+{
+  "title": {
+    "text": "ACT leads, but states are tightly grouped",
+    "subtitle": "Digital ability, 2025 · national score 73.6 · index points out of 100",
+    "anchor": "start",
+    "fontSize": 17,
+    "fontWeight": "normal",
+    "color": "#263940",
+    "subtitleColor": "#59696d",
+    "subtitleFontSize": 12,
+    "offset": 15
+  },
+  "data": {
+    "url": "data/states_2025.csv"
+  },
+  "width": "container",
+  "height": 275,
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "size": 20,
+        "cornerRadiusEnd": 3,
+        "color": "#2475AC"
+      },
+      "encoding": {
+        "y": {
+          "field": "code",
+          "type": "nominal",
+          "sort": [
+            "ACT",
+            "VIC",
+            "NSW",
+            "WA",
+            "NT",
+            "QLD",
+            "SA",
+            "TAS"
+          ],
+          "title": null
+        },
+        "x": {
+          "field": "ability",
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              100
+            ]
+          },
+          "title": "Digital ability score (0–100)"
+        },
+        "tooltip": [
+          {
+            "field": "state"
+          },
+          {
+            "field": "ability",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "rule",
+        "color": "#263940",
+        "strokeDash": [
+          4,
+          4
+        ],
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "x": {
+          "datum": 73.6,
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 5,
+        "color": "#263940",
+        "fontWeight": "bold",
+        "fontSize": 11
+      },
+      "encoding": {
+        "x": {
+          "field": "ability",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "code",
+          "type": "nominal",
+          "sort": [
+            "ACT",
+            "VIC",
+            "NSW",
+            "WA",
+            "NT",
+            "QLD",
+            "SA",
+            "TAS"
+          ]
+        },
+        "text": {
+          "field": "ability",
+          "type": "quantitative",
+          "format": ".1f"
+        }
+      }
+    }
+  ],
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "background": "transparent",
+    "font": "Arial",
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelColor": "#263940",
+      "titleColor": "#263940",
+      "gridColor": "#e5e9e5",
+      "labelFontSize": 12,
+      "titleFontSize": 12
+    },
+    "legend": {
+      "labelColor": "#263940",
+      "titleColor": "#263940",
+      "labelFontSize": 12
+    }
+  }
+}
